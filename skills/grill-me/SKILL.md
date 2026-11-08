@@ -1,6 +1,6 @@
 ---
 name: "grill-me"
-description: "Use when the user asks to be interviewed or grilled, or asks for help organizing their thoughts on an idea, plan, design, or requirements through questions, before a solution is chosen."
+description: "Use when the user asks to be interviewed or grilled, or asks for help organizing their thoughts on an idea, plan, design, or requirements through questions, before a solution is chosen. Not for drafting questions that someone else will answer; use to-question for that."
 ---
 
 # Grill Me
