@@ -1,0 +1,14 @@
+{
+  "name": "clarity-toolkit-claude",
+  "owner": {
+    "name": "Sagong Gil"
+  },
+  "plugins": [
+    {
+      "name": "clarity-toolkit",
+      "source": "./",
+      "description": "Three conversation skills for Claude: grill-me, meta-conv-filter, and handoff.",
+      "version": "1.0.0"
+    }
+  ]
+}
