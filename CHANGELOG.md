@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0
+
+- `grill-me` survey rounds are created as a Claude Docs doc when the session supports it, so the user can answer directly under each question. Later rounds are appended to the same doc; without Docs, rounds fall back to the chat.
+- Step mode stays in the chat.
+- When the user finishes a round, Claude reads the answers and comments from the doc; chat answers also count.
+- Update the English and Korean READMEs and the plugin manifests.
+
 ## 1.2.0
 
 - `grill-me` now runs as a survey by default: 10–15 questions per round, grouped by theme, for up to three rounds. The user can ask for additional rounds after round 3.

@@ -30,7 +30,12 @@ If the user asks to stop or summarize early, comply immediately: give a provisio
 
 ## Round format
 
-Write each round directly in the chat reply as plain Markdown, translated into the conversation language. Survey mode:
+Write rounds in the conversation language. Where each mode puts them:
+
+- **Survey mode: an editable document.** When the session can create Claude Docs (or another editable document the user can type into), put the survey there so the user can answer directly under each question. Use one document per interview: create it for round 1, titled "<Topic> - survey", and append each later round as a new section of the same document, so earlier questions and answers stay visible. In the chat reply, give only the document link and one line saying to write answers under each question and reply when done. If the session cannot create such a document, write the round in the chat instead.
+- **Step mode: the chat.** Write each round directly in the chat reply, even when documents are available.
+
+Survey round layout (the document section, or the chat fallback):
 
 ```
 # <Topic> - round <n> of 3
@@ -38,9 +43,10 @@ Write each round directly in the chat reply as plain Markdown, translated into t
 ## <Theme>
 
 Q1. <Open question without a presumed solution>
-My answer:
 
 (Optional examples, multiple allowed: <a> / <b> / write your own / not sure / decide later)
+
+My answer:
 
 Q2. ...
 
@@ -51,9 +57,11 @@ Q3. ...
 
 Number questions continuously across rounds (round 2 starts after the last ID of round 1) so every ID stays unique. From round 2 on, open with at most two lines on what the previous answers settled; do not restate the full record. For a fourth or later round, label it "additional round <n>". In step mode, use the same question block without the round count or themes.
 
+Collecting answers from a document: when the user says they are done, read the document again and take the answers written under each question, plus any comments on it. Answers given in the chat count too; if the chat and the document disagree, ask which one holds. Do not treat an empty answer field as agreement. Do not rewrite or delete what the user typed in the document.
+
 Keep only a one-line reply instruction outside the questions. Tell the user they can answer in prose, answer by ID, answer only some questions, skip, or rewrite a question. Do not make them retype the whole round. A clickable multiple-choice question tool may be used only for a round that is genuinely a choice among options, never as the default for open questions.
 
-If the user wants to keep or share the final summary, create it as an editable document when the session can (for example a Docs artifact); otherwise give it as one fenced Markdown block and say no file was saved. Create a .md file only when asked and file creation is available.
+If the user wants to keep or share the final summary, create it as an editable document when the session can (for example a Claude Docs doc; in survey mode it may be a new section of the survey document if the user prefers); otherwise give it as one fenced Markdown block and say no file was saved. Create a .md file only when asked and file creation is available.
 
 ## Final summary as a standalone deliverable
 
