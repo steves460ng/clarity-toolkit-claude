@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0
+
+- `grill-me` now runs as a survey by default: 10–15 questions per round, grouped by theme, for up to three rounds. The user can ask for additional rounds after round 3.
+- The previous one-or-two-questions-per-round pace becomes step mode, used only when the user explicitly asks for it.
+- Question IDs continue across rounds, and partial answers carry forward instead of being re-asked.
+- Update the English and Korean READMEs and the plugin manifests.
+
 ## 1.1.0
 
 - Add `to-question`, renamed from `to-questionnaire`: drafts a questionnaire for another person instead of asking the user the recipient's questions.
