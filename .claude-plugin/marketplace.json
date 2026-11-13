@@ -8,7 +8,7 @@
       "name": "clarity-toolkit",
       "source": "./",
       "description": "Four conversation skills for Claude: grill-me, to-question, meta-conv-filter, and handoff.",
-      "version": "1.1.0"
+      "version": "1.2.0"
     }
   ]
 }

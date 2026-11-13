@@ -37,7 +37,7 @@ Ask in natural language. Naming the skill makes the choice explicit.
 
 > Use grill-me to interview me. I want to build an onboarding page for new employees.
 
-Claude asks one or two open questions per round, starting with prerequisite decisions (who the users are before how they log in). Answer in prose or by question ID, skip a question, or rewrite it. Say "stop here and summarize" at any time.
+By default, Claude asks 10–15 questions per round, grouped by theme, for up to three rounds: round 1 maps the topic, round 2 goes deeper, and round 3 closes the gaps. Prerequisite decisions come first (who the users are before how they log in). If you want to go further after round 3, ask for another round. If you prefer one or two questions at a time, say "ask me one at a time". Answer in prose or by question ID, answer only some questions, skip a question, or rewrite it. Say "stop here and summarize" at any time.
 
 **What you get:** a summary of the goal, main users, scope, accepted decisions, constraints, and open questions. Confirming the summary does not authorize implementation.
 

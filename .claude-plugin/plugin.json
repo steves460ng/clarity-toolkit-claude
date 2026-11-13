@@ -1,6 +1,6 @@
 {
   "name": "clarity-toolkit",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Four conversation skills for Claude: grill-me (requirements interview), to-question (questionnaire for someone else), meta-conv-filter (standalone final text), and handoff (context transfer).",
   "author": {
     "name": "Sagong Gil"
