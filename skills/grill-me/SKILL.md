@@ -11,20 +11,20 @@ While this skill is active, asking questions is the task. Do not cut the intervi
 
 ## Modes
 
-- **Survey mode (default).** Each round is a questionnaire of 10–15 questions. Run up to three rounds: round 1 maps the whole topic, round 2 goes deeper on what round 1 opened, and round 3 closes the remaining gaps. After round 3, give the summary (step 7) and say in one line that another round is available if the user wants to go further. Run a fourth or later round only when the user asks for one; the same format applies.
-- **Step mode (only on explicit request).** Ask one or two questions per round instead, and keep going until the user wants to converge. Use it only when the user asks for it, such as "ask me one at a time", "step by step", "하나씩 물어봐", or "단계별로". Do not choose it on your own because the topic seems small or the user's answers are short.
+- **Step mode (default).** Ask one or two questions per round in the chat, and keep going until the user wants to converge. Short rounds stay readable on a phone and let each answer shape the next question.
+- **Survey mode (only on explicit request).** Each round is a questionnaire of 10–15 questions. Run up to three rounds: round 1 maps the whole topic, round 2 goes deeper on what round 1 opened, and round 3 closes the remaining gaps. After round 3, give the summary (step 7) and say in one line that another round is available if the user wants to go further. Run a fourth or later round only when the user asks for one; the same format applies. Use survey mode only when the user asks for it, such as "survey mode", "ask me everything at once", "give me a questionnaire", "설문으로 해 줘", or "한꺼번에 물어봐". Do not choose it on your own because the topic seems large or the user's answers are long.
 
-The user can switch modes at any point; keep question IDs and recorded answers when they do. Do not ask which mode or how many rounds before starting.
+The user can switch modes at any point; keep question IDs and recorded answers when they do. Do not ask which mode or how many rounds before starting. In the first step-mode reply, mention in one line that a full survey is available on request.
 
 ## Procedure
 
 1. Extract the goal, audience, success criteria, constraints, prior decisions, and unknowns from the visible context. Reuse what is already established; ask for the topic only if it is absent. Do not repeat questions the user has already answered.
 2. Separate facts to check from decisions for the user. Check accessible facts with available tools; otherwise mark them unverified. Ask the user only for information you cannot obtain and actually need.
-3. Ask prerequisite decisions first (for example, who the users are before how they log in). In survey mode, put only questions that can be answered now into a round; a question that depends on an unanswered one waits for the next round. Group the round's questions under a few themes, ordered from foundational to detailed. Start with open questions about their experience, goals, concerns, and possibilities before asking them to narrow choices. Do not pad a round to reach 10: if fewer genuine questions remain, ask only those and treat that as a sign the interview is ready to converge. Never exceed 15. A pending lookup blocks only dependent questions.
+3. Ask prerequisite decisions first (for example, who the users are before how they log in). In step mode, pick the one or two questions that unblock the most later decisions. In survey mode, put only questions that can be answered now into a round; a question that depends on an unanswered one waits for the next round. Group the round's questions under a few themes, ordered from foundational to detailed. Start with open questions about their experience, goals, concerns, and possibilities before asking them to narrow choices. Do not pad a round to reach 10: if fewer genuine questions remain, ask only those and treat that as a sign the interview is ready to converge. Never exceed 15. A pending lookup blocks only dependent questions.
 4. Do not lead with a recommendation or phrase questions so that "yes" accepts your preferred solution. Offer neutral, non-exhaustive examples or optional choices only when they help or the user asks, always with write-in, unsure, and defer options. Multiple selections are allowed unless a real constraint makes them exclusive. Give advice when requested, or once exploration supports it, labeled as a proposal rather than a filled-in answer.
 5. Wait for the user's response before opening the next round. Partial answers are normal: build the next round from what was answered, carry a skipped question forward only if it still matters, and list the rest as open. A bare "yes" to a multi-part round does not fill blanks or select all choices. Silence, skipped questions, or unselected options are not agreement.
 6. Follow new themes and explicit revisions instead of forcing the old path. Keep question IDs stable when wording changes, note which earlier decisions need revisiting, and preserve unaffected answers. A new requirement can supersede an accepted one; mark the change without erasing history.
-7. When the user wants to converge, the default rounds are done, or no meaningful questions remain, offer a summary of the goal, main users, scope, accepted decisions, constraints, acceptance criteria where known, and open possibilities. Do not force closure or invent a decision to finish. Ask whether they want to revise it or use it as the working summary. Confirmation does not authorize implementation or external actions.
+7. When the user wants to converge, the three survey rounds are done (survey mode), or no meaningful questions remain, offer a summary of the goal, main users, scope, accepted decisions, constraints, acceptance criteria where known, and open possibilities. Do not force closure or invent a decision to finish. Ask whether they want to revise it or use it as the working summary. Confirmation does not authorize implementation or external actions.
 
 If the user asks to stop or summarize early, comply immediately: give a provisional summary and list unresolved questions. If they say no more questions, do not append another question. Do not promise exhaustive certainty. Maintain a compact decision record within the conversation; no persistent memory is required.
 
@@ -32,8 +32,18 @@ If the user asks to stop or summarize early, comply immediately: give a provisio
 
 Write rounds in the conversation language. Where each mode puts them:
 
-- **Survey mode: an editable document.** When the session can create Claude Docs (or another editable document the user can type into), put the survey there so the user can answer directly under each question. Use one document per interview: create it for round 1, titled "<Topic> - survey", and append each later round as a new section of the same document, so earlier questions and answers stay visible. In the chat reply, give only the document link and one line saying to write answers under each question and reply when done. If the session cannot create such a document, write the round in the chat instead.
 - **Step mode: the chat.** Write each round directly in the chat reply, even when documents are available.
+- **Survey mode: an editable document.** When the session can create Claude Docs (or another editable document the user can type into), put the survey there so the user can answer directly under each question. Use one document per interview: create it for round 1, titled "<Topic> - survey", and append each later round as a new section of the same document, so earlier questions and answers stay visible. In the chat reply, give only the document link and one line saying to write answers under each question and reply when done. If the session cannot create such a document, write the round in the chat instead.
+
+Step round layout:
+
+```
+Q1. <Open question without a presumed solution>
+
+(Optional examples, multiple allowed: <a> / <b> / write your own / not sure / decide later)
+```
+
+Number questions continuously in step mode too, and keep each reply short: no themes, no round count, and at most one line on what the last answer settled.
 
 Survey round layout (the document section, or the chat fallback):
 
@@ -55,7 +65,7 @@ Q2. ...
 Q3. ...
 ```
 
-Number questions continuously across rounds (round 2 starts after the last ID of round 1) so every ID stays unique. From round 2 on, open with at most two lines on what the previous answers settled; do not restate the full record. For a fourth or later round, label it "additional round <n>". In step mode, use the same question block without the round count or themes.
+Number questions continuously across rounds (round 2 starts after the last ID of round 1) so every ID stays unique. From round 2 on, open with at most two lines on what the previous answers settled; do not restate the full record. For a fourth or later round, label it "additional round <n>". When switching from step mode to survey mode, continue the existing question IDs.
 
 Collecting answers from a document: when the user says they are done, read the document again and take the answers written under each question, plus any comments on it. Answers given in the chat count too; if the chat and the document disagree, ask which one holds. Do not treat an empty answer field as agreement. Do not rewrite or delete what the user typed in the document.
 
